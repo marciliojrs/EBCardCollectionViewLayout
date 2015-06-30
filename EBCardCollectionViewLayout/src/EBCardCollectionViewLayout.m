@@ -245,6 +245,9 @@ static NSString * const CellKind = @"CardCell";
         NSInteger newPage = round(floatPage);
         if (_currentPage != newPage) {
             _currentPage = newPage;
+            if ([self.delegate respondsToSelector:@selector(collectionViewLayout:didChangePage:)]) {
+                [self.delegate collectionViewLayout:self didChangePage:_currentPage];
+            }
         }
     }
 }

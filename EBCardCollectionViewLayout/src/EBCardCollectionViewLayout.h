@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class EBCardCollectionViewLayout;
+@protocol EBCardCollectionViewLayoutDelegate <NSObject>
+
+@optional
+- (void)collectionViewLayout:(EBCardCollectionViewLayout *)layout didChangePage:(NSInteger)currentPage;
+
+@end
+
 typedef NS_ENUM(NSUInteger, EBCardCollectionLayoutType) {
     EBCardCollectionLayoutHorizontal,
     EBCardCollectionLayoutVertical
@@ -19,4 +27,6 @@ typedef NS_ENUM(NSUInteger, EBCardCollectionLayoutType) {
 @property (nonatomic, assign) UIOffset offset;
 @property (nonatomic, strong) NSDictionary *layoutInfo;
 @property (assign) EBCardCollectionLayoutType layoutType;
+@property (nonatomic, weak) id<EBCardCollectionViewLayoutDelegate> delegate;
+
 @end
